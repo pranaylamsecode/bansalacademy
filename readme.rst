@@ -9,3 +9,7 @@ Password - admin123
  Student credentials
 Usr- ankita@student.com
 Psd- 1234
+
+
+//
+http://localhost/bansal/admin/Ujian
