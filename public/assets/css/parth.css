@@ -1,0 +1,194 @@
+.career_img{
+    background-color: red;
+    height: 40rem;
+}
+
+.heading{
+    text-align: center;
+    color: #268ECD;
+}
+
+#image1{
+    width: 35rem;
+    height: 300px;
+}
+#image2{
+    width: 43rem;
+    height: 320px;
+}
+#image3{
+    width: 35rem;
+    
+}
+
+#banner_area{
+    background-image: url("../images/slider/bansal_slider_image.webp");
+    width: 100%;
+    height: 382px;
+}
+
+#career_title{
+    justify-content: center;
+}
+
+.container_title{
+    text-align: center;
+
+}
+
+.container_content{
+    text-align: center;
+  
+}
+.container_content ul li
+{
+    display: inline-block;
+    content: "/";
+    text-decoration: none;
+
+    font-weight: 600;
+}
+
+.container_content a{
+    color:#268ECD;
+    font-weight: 600;
+}
+#sub_head{
+    margin-bottom: 50px;
+}
+
+
+/* scholarship css */
+
+.scholar-container{
+--bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 0;
+    width: 100%;
+    padding-right: calc(var(--bs-gutter-x) * .5);
+    padding-left: calc(var(--bs-gutter-x) * .5);
+    margin-right: auto;
+    margin-left: auto
+}
+
+#sec_1_card1{
+    padding: 20px;
+}
+
+#card1 , #card2, #card3{
+    /* width: 35rem; */
+    height: 18rem;
+    text-align: center;
+}
+
+#testimonial{
+    width: 35rem; 
+    height: 50rem;
+    border-radius: 30px;
+}
+
+#testimonial_content{
+    /* background-color: hsl(0deg 0% 87.33%); */
+    /* border-radius: 10px; */
+}
+
+#section4_card{
+    width: 30rem;
+    height: 47rem;
+    border-radius: 30px;
+}
+
+#sec3_cards{
+    width: 25rem;
+    height: 38rem;
+    border-radius: 30px;
+}
+
+#Highlights_card{
+    width: 100%;
+    height: 15rem;
+    padding: 30px;
+    border-radius: 10px;
+}
+
+#Highlights_card:hover{
+    background-color: #00a9e8;
+    width: 100%;
+    height: 15rem;
+    padding: 35px;
+    border-radius: 10px;
+}
+
+.section2{
+    background-color: hsl(202, 100%, 96%);
+    padding: 1rem 0px;
+}
+
+.section4{
+    /* background-color: hsl(202, 100%, 96%);     */
+    padding: 2rem 0px;
+    margin-top: 7rem;
+}
+
+.section5{
+    background-color: hsl(202, 100%, 96%);
+    padding-bottom: 5rem;
+    text-align: center;
+}
+
+.section6{
+    /* background-color: hsl(202, 100%, 96%);     */
+    padding: 5rem 0;
+}
+
+#sec3_img1{
+ width: 20rem;   
+ /* padding-top: 1rem; */
+}
+
+#section5_card{
+    width: 25rem;
+    height: 43rem;
+    border-radius: 30px;
+}
+
+.career-enq-btn{
+    text-align: center;
+}
+
+
+/* Add this media query at the end of your CSS file */
+@media (max-width: 767px) {
+    #card1, #card2, #card3 {
+        width: 100%; /* Make cards take full width on small screens */
+        height: auto; /* Adjust height as needed */
+    }
+
+    #testimonial {
+        width: 100%;
+        height: auto;
+        border-radius: 15px; /* Adjust border-radius for smaller screens */
+    }
+
+    #section4_card {
+        width: 100%;
+        height: auto;
+        border-radius: 15px;
+    }
+
+    #Highlights_card {
+        width: 100%;
+        height: auto;
+        padding: 20px;
+        border-radius: 10px;
+    }
+
+    #section5_card{
+        width: 23rem;
+        margin-top: 2rem;
+    }
+
+    #sec3_cards{
+        width: 23rem;
+        margin-top: 2rem;
+    }
+}
