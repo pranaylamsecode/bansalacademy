@@ -90,8 +90,7 @@
                     <div class="thrown-search-button style-three">
                         <div class="thrown-btn  style-three ">
                             <i class='far fa-user-circle header-icon'></i>
-                            <a class="header-button" href="digital-class.php
-                            ">Login </a>
+                            <a class="header-button" href=<?php echo base_url('admin');?>>Login </a>
                         </div>
                     </div>
                 </div>

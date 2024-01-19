@@ -1,7 +1,7 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-
-class Admin extends CI_Controller { 
+ini_set('display_errors', 1);
+class Admin extends CI_Controller {
 
     function __construct() {
         parent::__construct();
@@ -15,12 +15,13 @@ class Admin extends CI_Controller {
                 $this->load->model('event_model');                      // Load Apllication Model Here
                 $this->load->model('language_model');                      // Load Apllication Model Here
                 $this->load->model('admin_model');                      // Load Apllication Model Here
-                $this->load->model('rlecture_model');  
-                $this->load->model('home_model');  
+                $this->load->model('Rlecture_model');
+                $this->load->model('home_model');
+                $this->load->library('csvimport');
     }
 
     /**default functin, redirects to login page if no admin logged in yet***/
-    public function index() 
+    public function index()
 	{
     if ($this->session->userdata('admin_login') != 1) redirect(base_url() . 'login', 'refresh');
     if ($this->session->userdata('admin_login') == 1) redirect(base_url() . 'admin/dashboard', 'refresh');
@@ -41,44 +42,44 @@ class Admin extends CI_Controller {
     if ($this->session->userdata('admin_login') != 1) redirect(base_url(), 'refresh');
     if ($param1 == 'update') {
 
-        $data = $imgData = array(); 
+        $data = $imgData = array();
         $prevImage = $imgData['userfile'];
 
         $data['name']   =   $this->input->post('name');
         $data['email']  =   $this->input->post('email');
 
-        if(!empty($_FILES['userfile']['name'])){ 
-            $imageName = $_FILES['userfile']['name']; 
-             
-            // File upload configuration 
-            $config['upload_path'] = 'uploads/admin_image/'; 
-            $config['allowed_types'] = 'jpg|jpeg|png|gif'; 
-        
-            // Load and initialize upload library 
-            $this->load->library('upload', $config); 
-            $this->upload->initialize($config); 
-             
-            // Upload file to server 
-            if($this->upload->do_upload('userfile')){ 
-                // Uploaded file data 
-                $fileData = $this->upload->data(); 
-                $data['userfile'] = $fileData['file_name']; 
-                 
-                // Remove old file from the server  
-                if(!empty($prevImage)){ 
-                    @unlink($this->uploadPath.$prevImage);  
-                } 
-            }else{ 
-                $error = $this->upload->display_errors();  
-            } 
+        if(!empty($_FILES['userfile']['name'])){
+            $imageName = $_FILES['userfile']['name'];
+
+            // File upload configuration
+            $config['upload_path'] = 'uploads/admin_image/';
+            $config['allowed_types'] = 'jpg|jpeg|png|gif';
+
+            // Load and initialize upload library
+            $this->load->library('upload', $config);
+            $this->upload->initialize($config);
+
+            // Upload file to server
+            if($this->upload->do_upload('userfile')){
+                // Uploaded file data
+                $fileData = $this->upload->data();
+                $data['userfile'] = $fileData['file_name'];
+
+                // Remove old file from the server
+                if(!empty($prevImage)){
+                    @unlink($this->uploadPath.$prevImage);
+                }
+            }else{
+                $error = $this->upload->display_errors();
+            }
         }
-        
+
         $this->db->where('admin_id', $this->session->userdata('admin_id'));
         $this->db->update('admin', $data);
         // move_uploaded_file($_FILES['userfile']['tmp_name'], 'uploads/admin_image/' . $this->session->userdata('admin_id') . '.jpg');
         // $this->session->set_flashdata('flash_message', get_phrase('Info Updated'));
         redirect(base_url() . 'admin/manage_profile', 'refresh');
-       
+
     }
 
     if ($param1 == 'change_password') {
@@ -86,7 +87,7 @@ class Admin extends CI_Controller {
         $data['confirm_new_password']   =   sha1($this->input->post('confirm_new_password'));
 
         if ($data['new_password'] == $data['confirm_new_password']) {
-           
+
            $this->db->where('admin_id', $this->session->userdata('admin_id'));
            $this->db->update('admin', array('password' => $data['new_password']));
            $this->session->set_flashdata('flash_message', get_phrase('Password Changed'));
@@ -108,7 +109,7 @@ class Admin extends CI_Controller {
     function enquiry_category($param1 = null, $param2 = null, $param3 = null){
 
     if($param1 == 'insert'){
-   
+
         $this->crud_model->enquiry_category();
 
         $this->session->set_flashdata('flash_message', get_phrase('Data saved successfully'));
@@ -149,7 +150,7 @@ class Admin extends CI_Controller {
             $this->crud_model->delete_enquiry($param2);
             $this->session->set_flashdata('flash_message', get_phrase('Data deleted successfully'));
             redirect(base_url(). 'admin/list_enquiry', 'refresh');
-    
+
         }
 
         $page_data['page_name']     = 'list_enquiry';
@@ -180,7 +181,7 @@ class Admin extends CI_Controller {
             $this->crud_model->delete_club($param2);
             $this->session->set_flashdata('flash_message', get_phrase('Data deleted successfully'));
             redirect(base_url(). 'admin/club', 'refresh');
-    
+
             }
 
 
@@ -259,13 +260,13 @@ class Admin extends CI_Controller {
     }
 
 
- 
 
 
 
 
 
-  
+
+
 
 
     function teacher ($param1 = null, $param2 = null, $param3 = null){
@@ -287,7 +288,7 @@ class Admin extends CI_Controller {
             $this->teacher_model->deleteTeacherFunction($param2);
             $this->session->set_flashdata('flash_message', get_phrase('Data deleted successfully'));
             redirect(base_url(). 'admin/teacher', 'refresh');
-    
+
         }
 
         $page_data['page_name']     = 'teacher';
@@ -304,7 +305,7 @@ class Admin extends CI_Controller {
         echo '<option value="'.$row['designation_id'].'">' . $row['name'] . '</option>';
     }
 
- 
+
 
 
     function get_employees($department_id = null)
@@ -314,7 +315,7 @@ class Admin extends CI_Controller {
             echo '<option value="' . $employees['teacher_id'] . '">' . $employees['name'] . '</option>';
     }
 
- 
+
 
 
     /***********  The function manages Class Information  ***********************/
@@ -337,7 +338,7 @@ class Admin extends CI_Controller {
             $this->class_model->deleteClassFunction($param2);
             $this->session->set_flashdata('flash_message', get_phrase('Data deleted successfully'));
             redirect(base_url(). 'admin/classes', 'refresh');
-    
+
         }
 
         $page_data['page_name']     = 'class';
@@ -377,14 +378,14 @@ class Admin extends CI_Controller {
 
             if($class_id == '')
             $class_id = $this->db->get('class')->first_row()->class_id;
-            
+
             $page_data['page_name']     = 'section';
             $page_data['class_id']      = $class_id;
             $page_data['page_title']    = get_phrase('Manage Section');
             $this->load->view('backend/index', $page_data);
 
         }
-    
+
 
 
 
@@ -531,13 +532,13 @@ class Admin extends CI_Controller {
         if($param1 == 'create'){
             // print_r($param1);
             // exit;
-            $this->rlecture_model->createLectureLink();
+            $this->Rlecture_model->createLectureLink();
             $this->session->set_flashdata('flash_message', get_phrase('Data saved successfully'));
             redirect(base_url(). 'admin/manage_recorded_lecture', 'refresh');
         }
 
         if($param1 == 'update'){
-            $this->rlecture_model->updateLectureLink($param2);
+            $this->Rlecture_model->updateLectureLink($param2);
             $this->session->set_flashdata('flash_message', get_phrase('Data updated successfully'));
             redirect(base_url(). 'admin/manage_recorded_lecture', 'refresh');
         }
@@ -546,7 +547,7 @@ class Admin extends CI_Controller {
         if($param1 == 'delete'){
             // print_r($param1);
             // exit;
-            $this->rlecture_model->deleteLectureLink($param2);
+            $this->Rlecture_model->deleteLectureLink($param2);
             $this->session->set_flashdata('flash_message', get_phrase('Data deleted successfully'));
             redirect(base_url(). 'admin/manage_recorded_lecture', 'refresh');
         }
@@ -560,13 +561,13 @@ class Admin extends CI_Controller {
         /***********  The function manages meeting link ***********************/
         function manage_slider ($param1 = null, $param2 = null, $param3 = null){
 
-            if ($param1 == 'upload_logo') 
+            if ($param1 == 'upload_logo')
             {
                $this->home_model->system_logo();
                $this->session->set_flashdata('flash_message', get_phrase('slider_updated'));
                redirect(base_url() . 'admin/manage_slider', 'refresh');
-            } 
-    
+            }
+
             if($param1 == 'delete_slide'){
                 // print_r($param2);
                 // exit;
@@ -574,22 +575,22 @@ class Admin extends CI_Controller {
                 $this->session->set_flashdata('flash_message', get_phrase('Data deleted successfully'));
                 redirect(base_url(). 'admin/manage_slider', 'refresh');
             }
-    
+
             $page_data['page_name']     = 'manage_slider';
             $page_data['page_title']    = get_phrase('Manage Slider');
             $this->load->view('backend/index', $page_data);
-    
+
         }
 
         function results ($param1 = null, $param2 = null, $param3 = null){
 
-            if ($param1 == 'result_image') 
+            if ($param1 == 'result_image')
             {
                $this->home_model->result_image();
                $this->session->set_flashdata('flash_message', get_phrase('result_updated'));
                redirect(base_url() . 'admin/results', 'refresh');
-            } 
-    
+            }
+
             if($param1 == 'delete_result'){
                 // print_r($param2);
                 // exit;
@@ -597,24 +598,24 @@ class Admin extends CI_Controller {
                 $this->session->set_flashdata('flash_message', get_phrase('Data deleted successfully'));
                 redirect(base_url(). 'admin/results', 'refresh');
             }
-    
+
             $page_data['page_name']     = 'results';
             $page_data['page_title']    = get_phrase('Manage Results');
             $this->load->view('backend/index', $page_data);
-    
+
         }
 
         function courses ($param1 = null, $param2 = null, $param3 = null){
 
-            if ($param1 == 'create') 
+            if ($param1 == 'create')
             {
                 // print_r($param1);
                 // exit;
                $this->home_model->createCourse();
                $this->session->set_flashdata('flash_message', get_phrase('Data Added'));
                redirect(base_url() . 'admin/courses', 'refresh');
-            } 
-    
+            }
+
             if($param1 == 'delete_course'){
                 // print_r($param2);
                 // exit;
@@ -622,24 +623,24 @@ class Admin extends CI_Controller {
                 $this->session->set_flashdata('flash_message', get_phrase('Data deleted successfully'));
                 redirect(base_url(). 'admin/courses', 'refresh');
             }
-    
+
             $page_data['page_name']     = 'courses';
             $page_data['page_title']    = get_phrase('Manage Courses');
             $this->load->view('backend/index', $page_data);
-    
+
         }
 
         function announcement ($param1 = null, $param2 = null, $param3 = null){
 
-            if ($param1 == 'create_announcement') 
+            if ($param1 == 'create_announcement')
             {
                 // print_r($param1);
                 // exit;
                $this->home_model->createAnnouncement();
                $this->session->set_flashdata('flash_message', get_phrase('Data Added'));
                redirect(base_url() . 'admin/announcement', 'refresh');
-            } 
-    
+            }
+
             if($param1 == 'delete_announcement'){
                 // print_r($param2);
                 // exit;
@@ -647,25 +648,25 @@ class Admin extends CI_Controller {
                 $this->session->set_flashdata('flash_message', get_phrase('Data deleted successfully'));
                 redirect(base_url(). 'admin/announcement', 'refresh');
             }
-    
+
             $page_data['page_name']     = 'announcement';
             $page_data['page_title']    = get_phrase('Manage Announcement');
             $this->load->view('backend/index', $page_data);
-    
+
         }
 
 
         function meet_our_winners ($param1 = null, $param2 = null, $param3 = null){
 
-            if ($param1 == 'create_winners') 
+            if ($param1 == 'create_winners')
             {
                 // print_r($param1);
                 // exit;
                $this->home_model->createWinners();
                $this->session->set_flashdata('flash_message', get_phrase('Data Added'));
                redirect(base_url() . 'admin/meet_our_winners', 'refresh');
-            } 
-    
+            }
+
             if($param1 == 'delete_winners'){
                 // print_r($param2);
                 // exit;
@@ -673,24 +674,24 @@ class Admin extends CI_Controller {
                 $this->session->set_flashdata('flash_message', get_phrase('Data deleted successfully'));
                 redirect(base_url(). 'admin/meet_our_winners', 'refresh');
             }
-    
+
             $page_data['page_name']     = 'meet_our_winners';
             $page_data['page_title']    = get_phrase('Manage Winners');
             $this->load->view('backend/index', $page_data);
-    
+
         }
 
         function manage_gallery ($param1 = null, $param2 = null, $param3 = null){
 
-            if ($param1 == 'create_gallery') 
+            if ($param1 == 'create_gallery')
             {
                 // print_r($param1);
                 // exit;
                $this->home_model->createGallery();
                $this->session->set_flashdata('flash_message', get_phrase('Data Added'));
                redirect(base_url() . 'admin/manage_gallery', 'refresh');
-            } 
-    
+            }
+
             if($param1 == 'delete_gallery'){
                 // print_r($param2);
                 // exit;
@@ -698,24 +699,24 @@ class Admin extends CI_Controller {
                 $this->session->set_flashdata('flash_message', get_phrase('Data deleted successfully'));
                 redirect(base_url(). 'admin/manage_gallery', 'refresh');
             }
-    
+
             $page_data['page_name']     = 'manage_gallery';
             $page_data['page_title']    = get_phrase('Manage Gallery');
             $this->load->view('backend/index', $page_data);
-    
+
         }
 
         function manage_classroom ($param1 = null, $param2 = null, $param3 = null){
 
-            if ($param1 == 'create_classroom') 
+            if ($param1 == 'create_classroom')
             {
                 // print_r($param1);
                 // exit;
                $this->home_model->createClassroom();
                $this->session->set_flashdata('flash_message', get_phrase('Data Added'));
                redirect(base_url() . 'admin/manage_classroom', 'refresh');
-            } 
-    
+            }
+
             if($param1 == 'delete_classroom'){
                 // print_r($param2);
                 // exit;
@@ -723,24 +724,24 @@ class Admin extends CI_Controller {
                 $this->session->set_flashdata('flash_message', get_phrase('Data deleted successfully'));
                 redirect(base_url(). 'admin/manage_classroom', 'refresh');
             }
-    
+
             $page_data['page_name']     = 'manage_classroom';
             $page_data['page_title']    = get_phrase('Manage Classroom');
             $this->load->view('backend/index', $page_data);
-    
+
         }
 
         function manage_testimonial ($param1 = null, $param2 = null, $param3 = null){
 
-            if ($param1 == 'create_testimonial') 
+            if ($param1 == 'create_testimonial')
             {
                 // print_r($param1);
                 // exit;
                $this->home_model->createTestimonial();
                $this->session->set_flashdata('flash_message', get_phrase('Data Added'));
                redirect(base_url() . 'admin/manage_testimonial', 'refresh');
-            } 
-    
+            }
+
             if($param1 == 'delete_testimonial'){
                 // print_r($param2);
                 // exit;
@@ -748,14 +749,14 @@ class Admin extends CI_Controller {
                 $this->session->set_flashdata('flash_message', get_phrase('Data deleted successfully'));
                 redirect(base_url(). 'admin/manage_testimonial', 'refresh');
             }
-    
+
             $page_data['page_name']     = 'manage_testimonial';
             $page_data['page_title']    = get_phrase('Manage Testimonial');
             $this->load->view('backend/index', $page_data);
-    
+
         }
 
-  
+
     /***********  The function manages academic syllabus ***********************/
     function academic_syllabus ($param1 = null, $param2 = null, $param3 = null){
 
@@ -773,7 +774,7 @@ class Admin extends CI_Controller {
 
 
         if($param1 == 'delete'){
-           
+
             $this->academic_model->deleteAcademicSyllabus($param2);
             $this->session->set_flashdata('flash_message', get_phrase('Data deleted successfully'));
             redirect(base_url(). 'admin/academic_syllabus', 'refresh');
@@ -816,7 +817,7 @@ class Admin extends CI_Controller {
 
         if($class_id == '')
         $class_id = $this->db->get('class')->first_row()->class_id;
-        
+
         $page_data['page_name']     = 'academic_syllabus';
         $page_data['class_id']      = $class_id;
         $page_data['page_title']    = get_phrase('Academic Syllabus');
@@ -895,9 +896,9 @@ class Admin extends CI_Controller {
 
     function manage_attendance($date = null, $month= null, $year = null, $class_id = null, $section_id = null ){
         $active_sms_gateway = $this->db->get_where('sms_settings', array('type' => 'active_sms_gateway'))->row()->info;
-        
+
         if ($_POST) {
-	
+
             // Loop all the students of $class_id
             $students = $this->db->get_where('student', array('class_id' => $class_id))->result_array();
             foreach ($students as $key => $student) {
@@ -905,10 +906,10 @@ class Admin extends CI_Controller {
             $full_date = $year . "-" . $month . "-" . $date;
             $this->db->where('student_id', $student['student_id']);
             $this->db->where('date', $full_date);
-    
+
             $this->db->update('attendance', array('status' => $attendance_status));
-    
-                   if ($attendance_status == 2) 
+
+                   if ($attendance_status == 2)
             {
                      if ($active_sms_gateway != '' || $active_sms_gateway != 'disabled') {
                         $student_name   = $this->db->get_where('student' , array('student_id' => $student['student_id']))->row()->name;
@@ -929,7 +930,7 @@ class Admin extends CI_Controller {
                     }
            }
         }
-    
+
             $this->session->set_flashdata('flash_message', get_phrase('Updated Successfully'));
             redirect(base_url() . 'admin/manage_attendance/' . $date . '/' . $month . '/' . $year . '/' . $class_id . '/' . $section_id, 'refresh');
         }
@@ -954,26 +955,26 @@ class Admin extends CI_Controller {
 
 
     function attendance_report($class_id = NULL, $section_id = NULL, $month = NULL, $year = NULL) {
-        
+
         $active_sms_gateway = $this->db->get_where('sms_settings', array('type' => 'active_sms_gateway'))->row()->info;
-        
-        
+
+
         if ($_POST) {
         redirect(base_url() . 'admin/attendance_report/' . $class_id . '/' . $section_id . '/' . $month . '/' . $year, 'refresh');
         }
-        
+
         $classes = $this->db->get('class')->result_array();
         foreach ($classes as $key => $class) {
             if (isset($class_id) && $class_id == $class['class_id'])
                 $class_name = $class['name'];
             }
-                    
+
         $sections = $this->db->get('section')->result_array();
             foreach ($sections as $key => $section) {
                 if (isset($section_id) && $section_id == $section['section_id'])
                     $section_name = $section['name'];
         }
-        
+
         $page_data['month'] = $month;
         $page_data['year'] = $year;
         $page_data['class_id'] = $class_id;
@@ -991,11 +992,11 @@ class Admin extends CI_Controller {
 		$page_data['section_id'] 	= $section_id;					// get all section_id
 		$page_data['month'] 		= $month;						// get all month
 		$page_data['year'] 			= $year;						// get all class year
-		
+
         $this->load->view('backend/admin/loadAttendanceReport' , $page_data);
     }
     /******************** Load attendance with ajax code ends from here **********************/
-    
+
 
     /******************** print attendance report **********************/
 	function printAttendanceReport($class_id=NULL, $section_id=NULL, $month=NULL, $year=NULL)
@@ -1004,13 +1005,13 @@ class Admin extends CI_Controller {
 		$page_data['section_id'] 	= $section_id;					// get all section_id
 		$page_data['month'] 		= $month;						// get all month
 		$page_data['year'] 			= $year;						// get all class year
-		
+
         $page_data['page_name'] = 'printAttendanceReport';
         $page_data['page_title'] = "Attendance Report";
         $this->load->view('backend/index', $page_data);
     }
     /******************** /Ends here **********************/
-    
+
 
 
      /***********  The function below add, update and delete exam question table ***********************/
@@ -1105,9 +1106,9 @@ class Admin extends CI_Controller {
         $page_data['page_name']     = 'student_payment';
         $page_data['page_title']    = get_phrase('Student Payment');
         $this->load->view('backend/index', $page_data);
-    }   
+    }
     /***********  / Student payment ends here ***********************/
-    
+
     function get_class_student($class_id){
         $students = $this->db->get_where('student', array('class_id' => $class_id))->result_array();
             foreach($students as $key => $student)
@@ -1216,7 +1217,7 @@ class Admin extends CI_Controller {
 
             if($this->input->post('operation') == 'selection'){
 
-                $page_data['exam_id']       =  $this->input->post('exam_id'); 
+                $page_data['exam_id']       =  $this->input->post('exam_id');
                 $page_data['class_id']      =  $this->input->post('class_id');
                 $page_data['student_id']    =  $this->input->post('student_id');
 
@@ -1242,7 +1243,7 @@ class Admin extends CI_Controller {
                         $page_data['comment']       =   $this->input->post('comment_' . $dispay_subject_from_subject_table['subject_id']);
 
                         $this->db->where('mark_id', $this->input->post('mark_id_' . $dispay_subject_from_subject_table['subject_id']));
-                        $this->db->update('mark', $page_data);  
+                        $this->db->update('mark', $page_data);
                     }
 
                     $this->session->set_flashdata('flash_message', get_phrase('Data Updated Successfully'));
@@ -1266,7 +1267,7 @@ class Admin extends CI_Controller {
 
         if($this->input->post('operation') == 'selection'){
 
-            $page_data['exam_id']       =  $this->input->post('exam_id'); 
+            $page_data['exam_id']       =  $this->input->post('exam_id');
             $page_data['class_id']      =  $this->input->post('class_id');
             $page_data['subject_id']    =  $this->input->post('subject_id');
 
@@ -1292,7 +1293,7 @@ class Admin extends CI_Controller {
                     $page_data['comment']       =   $this->input->post('comment_' . $dispay_student_from_student_table['student_id']);
 
                     $this->db->where('mark_id', $this->input->post('mark_id_' . $dispay_student_from_student_table['student_id']));
-                    $this->db->update('mark', $page_data);  
+                    $this->db->update('mark', $page_data);
                 }
 
                 $this->session->set_flashdata('flash_message', get_phrase('Data Updated Successfully'));
@@ -1311,7 +1312,7 @@ class Admin extends CI_Controller {
 
 
 
-    
+
     /***********  The function below manages new admin ***********************/
     function newAdministrator ($param1 = null, $param2 = null, $param3 = null){
 
@@ -1344,5 +1345,35 @@ class Admin extends CI_Controller {
         $this->session->set_flashdata('flash_message', get_phrase('Data updated successfully'));
         redirect(base_url(). 'admin/newAdministrator', 'refresh');
     }
+
+    function csvImportQuestion(){
+
+
+
+        $page_data['page_name']     = 'csv_import';
+        $page_data['page_title']    = get_phrase('Csv Import');
+        $this->load->view('backend/index', $page_data);
+    }
+
+    function import_csv(){
+
+        $file_data = $this->csvimport->get_array($_FILES["csv_file"]["tmp_name"]);
+        foreach($file_data as $row)
+        {
+
+            print_r($row);die;
+        /* $data[] = array(
+            'name' => $row["Name"],
+            'phone'   => $row["Phone"],
+            'email'   => $row["Email"]
+        ); */
+        }
+       /*  $this->csv_import_model->insert($data); */
+        }
+
+       /*  $page_data['page_name']     = 'csv_import';
+        $page_data['page_title']    = get_phrase('Csv Import');
+        $this->load->view('backend/index', $page_data); */
+
 
 }
