@@ -17,9 +17,9 @@ $running_year   = $this->db->get_where('settings', array('type' => 'session'))->
 
 
 	<?php include 'header.php'; ?>
-	<?php include $loginType.'/navigation.php';?>
+	<?php include 'student/navigation.php';?>
 	<?php include 'page_info.php';?>
-	<?php include $loginType.'/'.$page_name.'.php';?>
+	<?php include 'student/'.$page_name.'.php';?>
 
 
 	<?php // include 'dashboard.php'; ?>
