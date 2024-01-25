@@ -7,13 +7,13 @@
                                 return;
                             }
                             </script>
-							
-							
+
+
 	<?php if (($this->session->flashdata('error_message')) != ""): ?>
 	<script type="text/javascript">
     $(document).ready(function() {
         $.toast({
-           
+
             text: '<?php echo $this->session->flashdata('error_message'); ?>',
             position: 'top-right',
             loaderBg: '#f56954',
@@ -24,7 +24,7 @@
     });
     </script>
 	<?php endif; ?>
-	
+
 	<script type="text/javascript">
         function readURL(input) {
             if (input.files && input.files[0]) {
@@ -37,8 +37,8 @@
                 reader.readAsDataURL(input.files[0]);
             }
         }
-    </script> 
-	
+    </script>
+
 	<!-- ./wrapper -->
  <script type="text/javascript">
         function readURL(input) {
@@ -53,8 +53,8 @@
             }
         }
     </script>
-	
-	
+
+
 	<!-- jQuery -->
     <script src="<?php echo base_url(); ?>optimum/plugins/bower_components/jquery/dist/jquery.min.js" ></script>
 	<script src="<?php echo base_url(); ?>optimum/js/fullcalendar/fullcalendar.min.js" ></script>
@@ -62,14 +62,14 @@
 
 	<script src="<?php echo base_url(); ?>optimum/plugins/bower_components/dropzone-master/dist/dropzone.js" ></script>
 
-	
+
 	 <!-- Magnific popup JavaScript -->
     <script src="<?php echo base_url(); ?>optimum/plugins/bower_components/Magnific-Popup-master/dist/jquery.magnific-popup.min.js" ></script>
     <script src="<?php echo base_url(); ?>optimum/plugins/bower_components/Magnific-Popup-master/dist/jquery.magnific-popup-init.js" ></script>
 	<!--Wave Effects -->
-    <script src="<?php echo base_url(); ?>optimum/js/waves.js" ></script> 
+    <script src="<?php echo base_url(); ?>optimum/js/waves.js" ></script>
 
-	<script src="<?php echo base_url(); ?>optimum/bootstrap/dist/js/tether.min.js" ></script> 
+	<script src="<?php echo base_url(); ?>optimum/bootstrap/dist/js/tether.min.js" ></script>
     <script src="<?php echo base_url(); ?>optimum/plugins/bower_components/jquery/dist/jquery.min.js" ></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="<?php echo base_url(); ?>optimum/bootstrap/dist/js/tether.min.js" ></script>
@@ -86,7 +86,7 @@
     $('.slimscrollsidebar').slimScroll({
         height: '100%'
     });
-   
+
     </script>
     <!--Wave Effects -->
     <script src="<?php echo base_url(); ?>optimum/js/waves.js" ></script>
@@ -111,7 +111,7 @@
 	 <script src="<?php echo base_url(); ?>optimum/plugins/bower_components/html5-editor/wysihtml5-0.3.0.js" ></script>
     <script src="<?php echo base_url(); ?>optimum/plugins/bower_components/html5-editor/bootstrap-wysihtml5.js" ></script>
 	 <script src="<?php echo base_url(); ?>optimum/js/validator.js" ></script>
-	 
+
 	<script src="<?php echo base_url(); ?>optimum/plugins/bower_components/switchery/dist/switchery.min.js" ></script>
     <script src="<?php echo base_url(); ?>optimum/plugins/bower_components/custom-select/custom-select.min.js" type="text/javascript" ></script>
     <script src="<?php echo base_url(); ?>optimum/plugins/bower_components/bootstrap-select/bootstrap-select.min.js" type="text/javascript"></script>
@@ -119,7 +119,7 @@
     <script src="<?php echo base_url(); ?>optimum/plugins/bower_components/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js" type="text/javascript" ></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>optimum/plugins/bower_components/multiselect/js/jquery.multi-select.js" ></script>
 	<link rel="stylesheet" href="<?php echo base_url(); ?>optimum/plugins/bower_components/bootstrap-rtl-master/dist/js/bootstrap-rtl.min.js" >
-	
+
 	 <script src="<?php echo base_url(); ?>optimum/plugins/bower_components/datatables/jquery.dataTables.min.js" ></script>
     <!-- start - This is for export functionality only -->
     <script src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js" ></script>
@@ -134,13 +134,13 @@
     <script src="<?php echo base_url(); ?>optimum/plugins/bower_components/icheck/icheck.min.js" ></script>
     <script src="<?php echo base_url(); ?>optimum/plugins/bower_components/icheck/icheck.init.js" ></script>
 	 <script src="<?php echo base_url(); ?>optimum/plugins/bower_components/clockpicker/dist/jquery-clockpicker.min.js" ></script>
-	 
+
 	 <script src="<?php echo base_url(); ?>optimum/js/materialize.min.js"></script>
 	     <script src="<?php echo base_url(); ?>optimum/plugins/bower_components/dropify/dist/js/dropify.min.js" ></script>
 
-	 
+
 	 <!--Wave Effects -->
-    <script src="js/waves.js"></script>
+    <script src="<?php echo base_url(); ?>optimum/js/waves.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>optimum/plugins/bower_components/gallery/js/animated-masonry-gallery.js" ></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>optimum/plugins/bower_components/gallery/js/jquery.isotope.min.js" ></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>optimum/plugins/bower_components/fancybox/ekko-lightbox.min.js" ></script>
@@ -197,8 +197,8 @@
 
     });
     </script>
-	 
-	 
+
+
 	 <!-- Chart Files -->
 		<script src="<?php echo base_url(); ?>optimum/flot/jquery.flot.js"></script>
 		<script src="<?php echo base_url(); ?>optimum/flot.tooltip/flot.tooltip.js"></script>
@@ -209,16 +209,16 @@
 		<script src="<?php echo base_url(); ?>optimum/snap.svg/snap.svg.js"></script>
 		<script src="<?php echo base_url(); ?>optimum/snap.svg/snap.svg.js"></script>
 		<script src="<?php echo base_url(); ?>optimum/liquid-meter/liquid.meter.js"></script>
-	
+
 		<!-- Examples -->
 		<script src="<?php echo base_url();?>assets/javascripts/dashboard/custom_dashboard.js"></script>
 		<script src="<?php echo base_url();?>assets/javascripts/forms/custom_validation.js"></script>
         <script src="<?php echo base_url();?>assets/javascripts/tables/examples.datatables.default.js"></script>
 		<script src="<?php echo base_url();?>assets/javascripts/tables/examples.datatables.tabletools.js"></script>
-	 
+
 <script src="<?php echo base_url(); ?>optimum/js/jquery.PrintArea.js" type="text/JavaScript"></script>
 
-	 
+
 	  <script>
     $(document).ready(function() {
         $("#print").click(function() {
@@ -232,7 +232,7 @@
         });
     });
     </script>
-	
+
 	  <!-- Chart JS -->
 	<!-- <script src="<?php echo base_url(); ?>optimum/fullcalendar/js/index.js"></script>-->
 
@@ -291,8 +291,8 @@
         ]
     });
     </script>
-	
-	
+
+
     <script>
     $(document).ready(function() {
 
@@ -301,8 +301,8 @@
 
     });
     </script>
-	
-	
+
+
 <script>
     function checkDelete()
     {
@@ -335,7 +335,7 @@
         }
     });
     </script>
-	
+
 	<script type="text/javascript">
     //Alerts
 
@@ -440,7 +440,7 @@
         }
     });
     </script>
-	
+
 	<script src="<?php echo base_url(); ?>optimum/plugins/bower_components/toast-master/js/jquery.toast.js"></script>
 	<?php if (($this->session->flashdata('flash_message')) != ""): ?>
 	<script type="text/javascript">
@@ -457,10 +457,10 @@
     });
     </script>
 	<?php endif; ?>
-	
-	
-	
-	
+
+
+
+
 	<script src="<?php echo base_url(); ?>optimum/plugins/bower_components/switchery/dist/switchery.min.js"></script>
 <script>
     jQuery(document).ready(function() {
@@ -548,22 +548,22 @@
     </script>
     <!--Style Switcher -->
     <script src="<?php echo base_url(); ?>optimum/plugins/bower_components/styleswitcher/jQuery.style.switcher.js"></script>
-	
+
 	<script type="text/javascript" src="<?php echo base_url(); ?>optimum/date/daterangepicker.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>optimum/date/daterangepicker.css" />
 	<script src="<?php echo base_url(); ?>optimum/plugins/bower_components/Magnific-Popup-master/dist/jquery.magnific-popup.min.js"></script>
     <script src="<?php echo base_url(); ?>optimum/plugins/bower_components/Magnific-Popup-master/dist/jquery.magnific-popup-init.js"></script>
-	
-			
+
+
 <script src="<?php echo base_url(); ?>js/meteorEmoji.min.js"></script>
   <script>
     (() => {
       new MeteorEmoji()
     })()
   </script>
-  
+
   <script src="<?php echo base_url(); ?>js/chat.js"></script>
-  
+
   <script type="text/javascript">
 var audioUrl = '<?php echo base_url(); ?>uploads/chat.mp3';
 // SIMPLE EXEMPLE
@@ -573,7 +573,7 @@ $('.btn').click( () => audio.play() ); // that will do the trick !!
 // ADVANCED EXEMPLE
 
 // array with souds to cycle trough
-// the more in the array, the faster you can retrigger the click 
+// the more in the array, the faster you can retrigger the click
 var audio2 = [new Audio(audioUrl), new Audio(audioUrl), new Audio(audioUrl), new Audio(audioUrl), new Audio(audioUrl)]; // put it has much has you want
 var soundNb = 0; // counter
 
@@ -637,7 +637,7 @@ $('.btn2').click( () => audio2[ soundNb++ % audio2.length ].play());
         })
     });
     </script>
-		
+
 		<!--BlockUI Script -->
     <script src="<?php echo base_url(); ?>optimum/plugins/bower_components/blockUI/jquery.blockUI.js"></script>
     <script type="application/javascript">
@@ -711,13 +711,13 @@ $('.btn2').click( () => audio2[ soundNb++ % audio2.length ].play());
         $('div.block6').unblock();
     });
     </script>
-	
-	 <!-- Session-timeout-idle 
+
+	 <!-- Session-timeout-idle
     <script src="<?php echo base_url(); ?>optimum/idle/jquery.idletimeout.js"></script>
     <script src="<?php echo base_url(); ?>optimum/idle/jquery.idletimer.js"></script>
     <script src="<?php echo base_url(); ?>optimum/idle/session-timeout-idle-init.js"></script>
     -->
-	
+
 	<script>
     function checkTime(i) {
   if (i < 10) {
@@ -749,7 +749,7 @@ startTime();
  <!-- jQuery for carousel -->
     <script src="<?php echo base_url();?>optimum/plugins/bower_components/owl.carousel/owl.carousel.min.js"></script>
     <script src="<?php echo base_url();?>optimum/plugins/bower_components/owl.carousel/owl.custom.js"></script>
-	
+
 	<script src="<?php echo base_url('js/font-awesome-icon-picker/fontawesome-four-iconpicker.min.js');?>" charset="utf-8"></script>
 
 <script>

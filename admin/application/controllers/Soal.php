@@ -28,7 +28,7 @@ class Soal extends CI_Controller {
 
 		$this->load->library(['datatables', 'form_validation']);// Load Library Ignited-Datatables
 		$this->load->helper('my');// Load Library Ignited-Datatables
-		/* $this->load->model('Master_model', 'master'); */
+		$this->load->model('Master_model', 'master');
 		$this->load->model('Soal_model', 'soal');
 		$this->form_validation->set_error_delimiters('','');
 
@@ -152,9 +152,9 @@ class Soal extends CI_Controller {
 
     public function validasi()
     {
-        if($this->ion_auth->is_admin()){
+        /* if($this->ion_auth->is_admin()){
             $this->form_validation->set_rules('dosen_id', 'Lecturer', 'required');
-        }
+        } */
         // $this->form_validation->set_rules('soal', 'Soal', 'required');
         // $this->form_validation->set_rules('jawaban_a', 'Jawaban A', 'required');
         // $this->form_validation->set_rules('jawaban_b', 'Jawaban B', 'required');
@@ -248,7 +248,7 @@ class Soal extends CI_Controller {
                 }
             }
 
-            if($this->ion_auth->is_admin()){
+            if(true){
                 $pecah = $this->input->post('dosen_id', true);
                 $pecah = explode(':', $pecah);
                 $data['dosen_id'] = $pecah[0];
@@ -263,7 +263,8 @@ class Soal extends CI_Controller {
                 $data['created_on'] = time();
                 $data['updated_on'] = time();
                 //insert data
-                $this->master->create('tb_soal', $data);
+               $this->master->create('tb_soal', $data);
+
             }else if($method==='edit'){
                 //push array
                 $data['updated_on'] = time();
