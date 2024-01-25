@@ -201,7 +201,7 @@
 
 	 <!-- Chart Files -->
 		<script src="<?php echo base_url(); ?>optimum/flot/jquery.flot.js"></script>
-		<script src="<?php echo base_url(); ?>optimum/flot.tooltip/flot.tooltip.js"></script>
+		<!-- <script src="<?php echo base_url(); ?>optimum/flot.tooltip/flot.tooltip.js"></script> -->
 		<script src="<?php echo base_url(); ?>optimum/flot/jquery.flot.pie.js"></script>
 		<script src="<?php echo base_url(); ?>optimum/flot/jquery.flot.categories.js"></script>
 		<script src="<?php echo base_url(); ?>optimum/flot/jquery.flot.resize.js"></script>
@@ -442,21 +442,7 @@
     </script>
 
 	<script src="<?php echo base_url(); ?>optimum/plugins/bower_components/toast-master/js/jquery.toast.js"></script>
-	<?php if (($this->session->flashdata('flash_message')) != ""): ?>
-	<script type="text/javascript">
-    $(document).ready(function() {
-        $.toast({
-			heading: 'Congratulations!!!',
-            text: '<?php echo $this->session->flashdata('flash_message'); ?>',
-            position: 'top-right',
-            loaderBg: '#ff6849',
-            icon: 'success',
-            hideAfter: 3500,
-            stack: 6
-        })
-    });
-    </script>
-	<?php endif; ?>
+
 
 
 

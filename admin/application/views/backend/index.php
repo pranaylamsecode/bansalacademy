@@ -33,11 +33,11 @@ $running_year   = $this->db->get_where('settings', array('type' => 'session'))->
 
 	<!-- Custom CSS -->
 
-	   <!--  <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+	    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
         <script src="<?=base_url()?>assets/bower_components/sweetalert2/sweetalert2.all.min.js"></script>
         <script src="<?=base_url()?>assets/bower_components/select2/js/select2.full.min.js"></script>
         <script src="<?=base_url()?>assets/bower_components/moment/min/moment.min.js"></script>
-        <script src="<?=base_url()?>assets/bower_components/bootstrap-datetimepicker/bootstrap-datetimepicker.min.js"></script> -->
+        <script src="<?=base_url()?>assets/bower_components/bootstrap-datetimepicker/bootstrap-datetimepicker.min.js"></script>
     <!-- here css fo exam_ci end  -->
 
     <!-- Preloader -->
