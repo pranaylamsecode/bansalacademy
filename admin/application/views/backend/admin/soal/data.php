@@ -24,6 +24,7 @@
 			<div class="col-sm-4">
 				<div class="pull-right">
 					<a href="<?=base_url('soal/add')?>" class="btn bg-blue btn-flat btn-sm"><i class="fa fa-plus"></i> Create Questions</a>
+					<a href="<?=base_url('Mahasiswa/import')?>" class="btn bg-blue btn-flat btn-sm"><i class="fa fa-plus"></i> Import Questions</a>
 					<button type="button" onclick="reload_ajax()" class="btn btn-flat btn-sm bg-maroon"><i class="fa fa-refresh"></i> Reload</button>
 				</div>
 			</div>

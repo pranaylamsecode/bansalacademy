@@ -5,7 +5,7 @@ class Master_model extends CI_Model
 {
     public function __construct()
     {
-        $this->db->query("SET sql_mode=(SELECT REPLACE(@@sql_mode, 'ONLY_FULL_GROUP_BY', ''));");
+/*         $this->db->query(); */
     }
 
     public function create($table, $data, $batch = false)
@@ -127,7 +127,7 @@ class Master_model extends CI_Model
             if ($id_jurusan === []) {
                 $id_jurusan = null;
             }
-            
+
             $this->db->select('*');
             $this->db->from('jurusan');
             $this->db->where_not_in('id_jurusan', $id_jurusan);
@@ -224,7 +224,7 @@ class Master_model extends CI_Model
         return $this->db->get()->result();
     }
 
-    
+
     public function getAllKelas()
     {
         $this->db->select('id_kelas, nama_kelas, nama_jurusan');
@@ -233,7 +233,7 @@ class Master_model extends CI_Model
         $this->db->order_by('nama_kelas');
         return $this->db->get()->result();
     }
-    
+
     public function getKelasByDosen($id)
     {
         $this->db->select('kelas.id_kelas');
