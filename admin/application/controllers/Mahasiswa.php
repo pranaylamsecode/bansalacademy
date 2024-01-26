@@ -207,7 +207,7 @@ class Mahasiswa extends CI_Controller {
 
 		/* $this->load->view('_templates/dashboard/_header', $data); */
 		/* $this->load->view('master/mahasiswa/import'); */
-
+		if ($import_data != null) $page_data['import'] = $import_data;
 		$page_data['check'] = 'new';
         $page_data['page_name'] = 'master/mahasiswa/import';
         $page_data['page_title'] = get_phrase('Question Paper');
@@ -218,7 +218,7 @@ class Mahasiswa extends CI_Controller {
 	{
 		$config['upload_path']		= 'uploads/import/';
 		$config['allowed_types']	= 'xls|xlsx|csv';
-		$config['max_size']			= 2048;
+		$config['max_size']			= 20480;
 		$config['encrypt_name']		= true;
 
 
@@ -255,11 +255,23 @@ class Mahasiswa extends CI_Controller {
 			$data = [];
 			for ($i = 1; $i < count($sheetData); $i++) {
 				$data[] = [
-					'nim' => $sheetData[$i][0],
+					/* 'nim' => $sheetData[$i][0],
 					'nama' => $sheetData[$i][1],
 					'email' => $sheetData[$i][2],
 					'jenis_kelamin' => $sheetData[$i][3],
-					'kelas_id' => $sheetData[$i][4]
+					'kelas_id' => $sheetData[$i][4] */
+
+
+
+
+					'soal' => $sheetData[$i][0],
+					'opsi_a' => $sheetData[$i][1],
+					'opsi_b' => $sheetData[$i][2],
+					'opsi_c' => $sheetData[$i][3],
+					'opsi_d' => $sheetData[$i][4],
+					'opsi_e' => $sheetData[$i][5],
+					'jawaban' => $sheetData[$i][6]
+
 				];
 			}
 
@@ -275,11 +287,13 @@ class Mahasiswa extends CI_Controller {
 		$data = [];
 		foreach ($input as $d) {
 			$data[] = [
-				'nim' => $d->nim,
-				'nama' => $d->nama,
-				'email' => $d->email,
-				'jenis_kelamin' => $d->jenis_kelamin,
-				'kelas_id' => $d->kelas_id
+				'soal' => $d->soal,
+				'opsi_a' => $d->opsi_a,
+				'opsi_b' => $d->opsi_b,
+				'opsi_c' => $d->opsi_c,
+				'opsi_d' => $d->opsi_d,
+				'opsi_e' => $d->opsi_e,
+				'jawaban' => $d->jawaban,
 			];
 		}
 

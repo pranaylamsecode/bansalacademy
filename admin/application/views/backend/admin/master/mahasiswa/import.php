@@ -36,11 +36,13 @@
                         <thead>
                             <tr>
                                 <td>No</td>
-                                <td>NIM</td>
-                                <td>Name</td>
-                                <td>Email</td>
-                                <td>Gender</td>
-                                <td>Class ID</td>
+                                <td>Que</td>
+                                <td>Option_a</td>
+                                <td>Option_b</td>
+                                <td>Option_c</td>
+                                <td>Option_d</td>
+								<td>Option_e</td>
+								<td>Answer</td>
                             </tr>
                         </thead>
                         <tbody>
@@ -54,24 +56,33 @@
                                         ?>
                                     <tr>
                                         <td><?= $no++; ?></td>
-                                        <td class="<?= $data['nim'] == null ? 'bg-danger' : ''; ?>">
-                                            <?= $data['nim'] == null ? 'NOT FILLED' : $data['nim']; ?>
+										<td class="<?= $data['soal'] == null ? 'bg-danger' : ''; ?>">
+                                            <?= $data['soal'] == null ? 'NOT FILLED' : $data['soal']; ?>
                                         </td>
-                                        <td class="<?= $data['nama'] == null ? 'bg-danger' : ''; ?>">
-                                            <?= $data['nama'] == null ? 'NOT FILLED' : $data['nama'];; ?>
+										<td class="<?= $data['opsi_a'] == null ? 'bg-danger' : ''; ?>">
+                                            <?= $data['opsi_a'] == null ? 'NOT FILLED' : $data['opsi_a']; ?>
                                         </td>
-                                        <td class="<?= $data['email'] == null ? 'bg-danger' : ''; ?>">
-                                            <?= $data['email'] == null ? 'NOT FILLED' : $data['email'];; ?>
+										<td class="<?= $data['opsi_b'] == null ? 'bg-danger' : ''; ?>">
+                                            <?= $data['opsi_b'] == null ? 'NOT FILLED' : $data['opsi_b']; ?>
                                         </td>
-                                        <td class="<?= $data['jenis_kelamin'] == null ? 'bg-danger' : ''; ?>">
-                                            <?= $data['jenis_kelamin'] == null ? 'NOT FILLED' : $data['jenis_kelamin'];; ?>
+										<td class="<?= $data['opsi_c'] == null ? 'bg-danger' : ''; ?>">
+                                            <?= $data['opsi_c'] == null ? 'NOT FILLED' : $data['opsi_c']; ?>
                                         </td>
-                                        <td class="<?= $data['kelas_id'] == null ? 'bg-danger' : ''; ?>">
-                                            <?= $data['kelas_id'] == null ? 'NOT FILLED' : $data['kelas_id'];; ?>
+										<td class="<?= $data['opsi_d'] == null ? 'bg-danger' : ''; ?>">
+                                            <?= $data['opsi_d'] == null ? 'NOT FILLED' : $data['opsi_d']; ?>
                                         </td>
+										<td class="<?= $data['opsi_e'] == null ? 'bg-danger' : ''; ?>">
+                                            <?= $data['opsi_e'] == null ? 'NOT FILLED' : $data['opsi_e']; ?>
+                                        </td>
+										<td class="<?= $data['jawaban'] == null ? 'bg-danger' : ''; ?>">
+                                            <?= $data['jawaban'] == null ? 'NOT FILLED' : $data['jawaban']; ?>
+                                        </td>
+
                                     </tr>
                             <?php
-                                        if ($data['nim'] == null || $data['nama'] == null || $data['email'] == null || $data['jenis_kelamin'] == null || $data['kelas_id'] == null) {
+
+
+                               if ($data['soal'] == null || $data['opsi_a'] == null || $data['opsi_b'] == null || $data['opsi_c'] == null || $data['opsi_d'] == null || $data['opsi_e'] == null || $data['jawaban'] == null) {
                                             $status = false;
                                         }
                                     endforeach;
