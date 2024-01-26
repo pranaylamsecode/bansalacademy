@@ -176,7 +176,8 @@ class Soal extends CI_Controller {
         $config['allowed_types']    = 'jpeg|jpg|png|gif|mpeg|mpg|mpeg3|mp3|wav|wave|mp4';
         $config['encrypt_name']     = TRUE;
 
-        return $this->load->library('upload', $config);
+        	 $this->load->library('upload', $config);
+		 return $this->upload->initialize($config);
     }
 
     public function save()

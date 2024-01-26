@@ -216,12 +216,16 @@ class Mahasiswa extends CI_Controller {
 	}
 	public function preview()
 	{
-		$config['upload_path']		= './uploads/import/';
+		$config['upload_path']		= 'uploads/import/';
 		$config['allowed_types']	= 'xls|xlsx|csv';
 		$config['max_size']			= 2048;
 		$config['encrypt_name']		= true;
 
+
+
+
 		$this->load->library('upload', $config);
+		$this->upload->initialize($config);
 
 		if (!$this->upload->do_upload('upload_file')) {
 			$error = $this->upload->display_errors();
