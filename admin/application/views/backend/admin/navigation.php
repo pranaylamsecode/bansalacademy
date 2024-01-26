@@ -22,14 +22,14 @@
                             // $key = $this->session->userdata('login_type') . '_id';
                             // $face_file = 'uploads/' . $this->session->userdata('login_type') . '_image/' . $this->session->userdata($key) . '.jpg';
                             // if (!file_exists($face_file)) {
-                            //     $face_file = 'uploads/default.jpg';                                 
+                            //     $face_file = 'uploads/default.jpg';
                             // }
                     ?>
 
                     <a href="#" class="waves-effect"><img src="<?php echo base_url('uploads/admin_image/') . $image;?>" alt="user-img"
                             class="img-circle"> <span class="hide-menu">
 
-                            <?php 
+                            <?php
                                 $account_type   =   $this->session->userdata('login_type');
                                 $account_id     =   $account_type.'_id';
                                 $name           =   $this->crud_model->get_type_name_by_id($account_type , $this->session->userdata($account_id), 'name');
@@ -71,7 +71,7 @@
                                 class="fa arrow"></span></span></a>
 
                     <ul class="nav nav-second-level<?php
-                        if ($page_name == 'manage_slider' || $page_name == 'courses' ||  $page_name == 'announcement' || 
+                        if ($page_name == 'manage_slider' || $page_name == 'courses' ||  $page_name == 'announcement' ||
                             $page_name == 'results' || $page_name == 'meet_our_winners') echo 'opened active';
                         ?>">
 
@@ -171,7 +171,7 @@
                     <ul class=" nav nav-second-level<?php
                         if ($page_name == 'add_quiz'||
                         $page_name == 'manage_quiz'||
-                        $page_name == 'add_quiz_question'|| 
+                        $page_name == 'add_quiz_question'||
                         $page_name == 'manage_quiz_question') echo 'opened active';
                     ?> ">
 
@@ -507,7 +507,7 @@
                                 class="fa arrow"></span></span></a>
 
                     <ul class=" nav nav-second-level<?php
-                        if ($page_name == 'submit_exam' || $page_name == 'grade' ||  $page_name == 'createExamination' || 
+                        if ($page_name == 'submit_exam' || $page_name == 'grade' ||  $page_name == 'createExamination' ||
                             $page_name == 'examQuestion') echo 'opened active';
                         ?>">
 
