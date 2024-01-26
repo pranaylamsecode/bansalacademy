@@ -41,3 +41,8 @@ opsi_c
 opsi_d
 opsi_e
 jawaban
+
+
+// quize link
+
+http://localhost/bansalacademy/quiz

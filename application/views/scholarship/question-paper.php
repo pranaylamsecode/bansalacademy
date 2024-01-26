@@ -20,7 +20,7 @@
 
 
                             <?php
-         
+
                             if(count($question) > 0)
                             {
                                 $counter = 1;
@@ -80,8 +80,8 @@
                                 {
                                 ?>
 
-                                <?php } 
-         
+                                <?php }
+
                             if($counter == count($question))
                             { ?>
 
@@ -131,9 +131,9 @@ function submitAnswer() {
 
 </html>
 
-<?php 
+<?php
 $count_down = !empty($time) && isset($time[0]->quiz_duration) ? $time[0]->quiz_duration : '0 min';
-$duration = trim($count_down, 'min'); 
+$duration = trim($count_down, 'min');
 ?>
 <script>
 
