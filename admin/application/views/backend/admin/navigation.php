@@ -188,6 +188,12 @@
                                 <span class="hide-menu"> <?php echo get_phrase('Manage Quiz Question'); ?></span>
                             </a>
                         </li>
+                        <li class="">
+                            <a href="<?php echo base_url(); ?>soal">
+                                <i class="fa fa-angle-double-right p-r-10"></i>
+                                <span class="hide-menu"> <?php echo get_phrase('New Manage Quiz Question'); ?></span>
+                            </a>
+                        </li>
                     </ul>
                 </li>
                 <?php endif;?>

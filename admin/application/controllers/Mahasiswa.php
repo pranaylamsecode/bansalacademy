@@ -297,7 +297,7 @@ class Mahasiswa extends CI_Controller {
 			];
 		}
 
-		$save = $this->master->create('mahasiswa', $data, true);
+		$save = $this->master->create('tb_soal', $data, true);
 		if ($save) {
 			redirect('mahasiswa');
 		} else {
