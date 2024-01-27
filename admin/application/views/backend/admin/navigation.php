@@ -339,26 +339,26 @@
                             </a>
                         </li>
 
-                        <li class="<?php if ($page_name == 'studentHouse') echo 'active'; ?> ">
+                       <!--  <li class="<?php if ($page_name == 'studentHouse') echo 'active'; ?> ">
                             <a href="<?php echo base_url(); ?>studenthouse/studentHouse">
                                 <i class="fa fa-angle-double-right p-r-10"></i>
                                 <span class="hide-menu"><?php echo get_phrase('Student House'); ?></span>
                             </a>
-                        </li>
+                        </li> -->
 
-                        <li class="<?php if ($page_name == 'clubActivity') echo 'active'; ?> ">
+                        <!-- <li class="<?php if ($page_name == 'clubActivity') echo 'active'; ?> ">
                             <a href="<?php echo base_url(); ?>activity/clubActivity">
                                 <i class="fa fa-angle-double-right p-r-10"></i>
                                 <span class="hide-menu"><?php echo get_phrase('Student Activity'); ?></span>
                             </a>
-                        </li>
+                        </li> -->
 
-                        <li class="<?php if ($page_name == 'socialCategory') echo 'active'; ?> ">
+                       <!--  <li class="<?php if ($page_name == 'socialCategory') echo 'active'; ?> ">
                             <a href="<?php echo base_url(); ?>socialcategory/socialCategory">
                                 <i class="fa fa-angle-double-right p-r-10"></i>
                                 <span class="hide-menu"><?php echo get_phrase('Social Category'); ?></span>
                             </a>
-                        </li>
+                        </li> -->
 
 
                     </ul>
@@ -379,12 +379,12 @@
                         if ($page_name == 'manage_attendance' || $page_name == 'attendance_report') echo 'opened active'; ?>">
 
 
-                        <li class="<?php if ($page_name == 'manage_attendance') echo 'active'; ?> ">
+                       <!--  <li class="<?php if ($page_name == 'manage_attendance') echo 'active'; ?> ">
                             <a href="<?php echo base_url(); ?>admin/manage_attendance/<?php echo date("d/m/Y"); ?>">
                                 <i class="fa fa-angle-double-right p-r-10"></i>
                                 <span class="hide-menu"><?php echo get_phrase('mark_attendance'); ?></span>
                             </a>
-                        </li>
+                        </li> -->
 
 
                         <li class="<?php if ($page_name == 'attendance_report') echo 'active'; ?> ">
@@ -408,7 +408,7 @@
                 <?php $check_admin_permission = $this->db->get_where('admin_role', array('admin_id' => $this->session->userdata('login_user_id')))->row()->download_page;?>
                 <?php if($check_admin_permission == '1'):?>
 
-                <li> <a href="#" class="waves-effect"><i data-icon="&#xe006;" class="fa fa-download p-r-10"></i> <span
+               <!--  <li> <a href="#" class="waves-effect"><i data-icon="&#xe006;" class="fa fa-download p-r-10"></i> <span
                             class="hide-menu"><?php echo get_phrase('download_page');?><span
                                 class="fa arrow"></span></span></a>
 
@@ -437,7 +437,7 @@
 
 
                     </ul>
-                </li>
+                </li> -->
 
                 <?php endif;?>
                 <!---  Permission for Admin Download Page  ends here ------>
@@ -575,7 +575,9 @@
                 </li>
 
 
-                <li class="collect_fee"> <a href="#" class="waves-effect"><i data-icon="&#xe006;"
+                <li class="collect_fee">
+
+                <a href="#" class="waves-effect"><i data-icon="&#xe006;"
                             class="fa fa-paypal p-r-10"></i> <span
                             class="hide-menu"><?php echo get_phrase('fee_collection');?><span
                                 class="fa arrow"></span></span></a>
@@ -591,12 +593,12 @@
                 echo 'opened active';
             ?>">
 
-                        <li class="<?php if ($page_name == 'student_payment') echo 'active'; ?> ">
+                       <!--  <li class="<?php if ($page_name == 'student_payment') echo 'active'; ?> ">
                             <a href="<?php echo base_url(); ?>admin/student_payment">
                                 <i class="fa fa-angle-double-right p-r-10"></i>
                                 <span class="hide-menu"><?php echo get_phrase('collect_fees'); ?></span>
                             </a>
-                        </li>
+                        </li> -->
 
                         <li class="<?php if ($page_name == 'student_invoice') echo 'active'; ?> ">
                             <a href="<?php echo base_url(); ?>admin/student_invoice">

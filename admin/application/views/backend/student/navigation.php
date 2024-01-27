@@ -17,14 +17,14 @@
                             $key = $this->session->userdata('login_type') . '_id';
                             $face_file = 'uploads/' . $this->session->userdata('login_type') . '_image/' . $this->session->userdata($key) . '.jpg';
                             if (!file_exists($face_file)) {
-                                $face_file = 'uploads/default.jpg';                                 
+                                $face_file = 'uploads/default.jpg';
                             }
                             ?>
 
                     <a href="#" class="waves-effect"><img src="<?php echo base_url() . $face_file;?>" alt="user-img"
                             class="img-circle"> <span class="hide-menu">
 
-                            <?php 
+                            <?php
                                 $account_type   =   $this->session->userdata('login_type');
                                 $account_id     =   $account_type.'_id';
                                 $name           =   $this->crud_model->get_type_name_by_id($account_type , $this->session->userdata($account_id), 'name');
@@ -89,7 +89,7 @@
                         </li>
 
 
-                        <li class="<?php if ($page_name == 'assignment') echo 'active'; ?> ">
+                        <!-- <li class="<?php if ($page_name == 'assignment') echo 'active'; ?> ">
                             <a href="<?php echo base_url(); ?>assignment/assignment">
                                 <i class="fa fa-angle-double-right p-r-10"></i>
                                 <span class="hide-menu"><?php echo get_phrase('Assignment'); ?></span>
@@ -101,7 +101,7 @@
                                 <i class="fa fa-angle-double-right p-r-10"></i>
                                 <span class="hide-menu"><?php echo get_phrase('Study Material'); ?></span>
                             </a>
-                        </li>
+                        </li> -->
 
 
 
