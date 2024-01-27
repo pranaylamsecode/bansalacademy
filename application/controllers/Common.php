@@ -67,28 +67,28 @@ class Common extends Base_Controller {
 
     public function questionPaper()
     {
-        // echo "hello";
+
         $user_id = $this->session->userdata('user_id');
+
+
 
         $quizid = $this->input->post('quiz', true);
 
-        $this->isUserLogin();
+
+
+        //$this->isUserLogin();
         $data = array();
 
-        //$where = "user_id = $user_id";
-        // $data_arr = ('is_active'=1);
-        // $data_arr = array('is_active' => 1);
+
         $refresh_select_users = "SELECT * FROM users WHERE is_active = 1 AND user_id = $user_id";
         $query_res = $this->db->query($refresh_select_users);
 
         $res = $query_res->row();
 
-        // Check if the property exists before trying to access it
+
         $row = isset($res->is_refresh) ? $res->is_refresh : null;
 
-        // $refresh_result = $this->User_model->selectRecord($refresh_select_users);
 
-        // if (count($refresh_result) == 1)
         if ($row == 1) {
             redirect('save-answer');
         } else {
@@ -98,10 +98,6 @@ class Common extends Base_Controller {
             $time = "SELECT quiz_duration FROM quiz_details WHERE quiz_id = $quizid";
             $data['time'] = $this->User_model->selectRecord($time);
 
-            // $this->load->view('question-paper', $data);
-
-            // print_r($data['question']);
-            // exit;
 
             $this->load->view('header_view');
             $this->load->view('scholarship/question-paper', $data);
