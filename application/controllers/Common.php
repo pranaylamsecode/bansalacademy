@@ -171,16 +171,7 @@ class Common extends Base_Controller {
 
         $query = "SELECT quiz_name, quiz_id
                   FROM quiz_details
-                  WHERE CURRENT_DATE() BETWEEN start_date AND end_date
-                  AND is_active = 1
-                  AND show_it = 1
-                  AND counter > 0
-                  AND quiz_id NOT IN (
-                      SELECT quiz_id
-                      FROM quiz_answer
-                      WHERE user_id = $user_id
-                      GROUP BY quiz_id
-                  )
+
                   ORDER BY quiz_id DESC";
 
         $data['quiz_name'] = $this->User_model->selectRecord($query);
