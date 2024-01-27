@@ -22,9 +22,9 @@ class Soal extends CI_Controller {
                 $this->load->model('event_model');                      // Load Apllication Model Here
                 $this->load->model('language_model');                      // Load Apllication Model Here
                 $this->load->model('admin_model');                      // Load Apllication Model Here
-                $this->load->model('Rlecture_model');
+                $this->load->model('RLecture_model');
                 $this->load->model('home_model');
-                $this->load->library('csvimport');
+               // $this->load->library('csvimport');
 
 		$this->load->library(['datatables', 'form_validation']);// Load Library Ignited-Datatables
 		$this->load->helper('my');// Load Library Ignited-Datatables
@@ -43,7 +43,7 @@ class Soal extends CI_Controller {
         $this->load->model('event_model');                      // Load Apllication Model Here
         $this->load->model('language_model');                      // Load Apllication Model Here
         $this->load->model('admin_model');                      // Load Apllication Model Here
-        $this->load->model('Rlecture_model');
+        $this->load->model('RLecture_model');
         $this->load->model('home_model');
         $this->load->library('csvimport'); */
 	}

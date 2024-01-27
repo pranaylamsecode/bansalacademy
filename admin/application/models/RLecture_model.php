@@ -1,13 +1,13 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 
-class RLecture_model extends CI_Model { 
-	
+class RLecture_model extends CI_Model {
+
 	function __construct()
     {
         parent::__construct();
     }
-	
+
    // The function below inserts into academic syllabus table //
    function createLectureLink(){
     $page_data = array(
@@ -46,7 +46,6 @@ function deleteLectureLink($param2){
     $this->db->where('id', $param2);
     $this->db->delete('recorded_lecture');
 }
-	
-	
-}
 
+
+}

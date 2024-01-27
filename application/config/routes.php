@@ -71,6 +71,10 @@ $route['question'] = 'common/question';
 $route['save-answer'] = 'common/saveAnswer';
 $route['quiz'] = 'common/startQuiz';
 $route['quiz-complete'] = 'common/quizComplete';
+$route['quiz-new'] = 'ujian';
+$route['start-quiz'] = 'ujian/token/8';
+$route['start-quiz'] = 'ujian/token/8';
 
+$route['ujian-key'] = 'ujian/?key=8f8440daa0c261c82e63aa24252057eb94849c07ebed3e2159b663ca04f2bdeb8ae65f74d2ea98f8939b08bb97e53f9132c3c7c01a9e43ac0a35e809162b7d2ebl5b4g4o4WtgQLQAZ1AQonTH9N3IaAvseO9FGhrnRsk%3D';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

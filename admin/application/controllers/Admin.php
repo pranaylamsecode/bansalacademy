@@ -15,9 +15,9 @@ class Admin extends CI_Controller {
                 $this->load->model('event_model');                      // Load Apllication Model Here
                 $this->load->model('language_model');                      // Load Apllication Model Here
                 $this->load->model('admin_model');                      // Load Apllication Model Here
-                $this->load->model('Rlecture_model');
+                $this->load->model('RLecture_model');
                 $this->load->model('home_model');
-                $this->load->library('csvimport');
+               // $this->load->library('csvimport');
     }
 
     /**default functin, redirects to login page if no admin logged in yet***/
@@ -532,13 +532,13 @@ class Admin extends CI_Controller {
         if($param1 == 'create'){
             // print_r($param1);
             // exit;
-            $this->Rlecture_model->createLectureLink();
+            $this->RLecture_model->createLectureLink();
             $this->session->set_flashdata('flash_message', get_phrase('Data saved successfully'));
             redirect(base_url(). 'admin/manage_recorded_lecture', 'refresh');
         }
 
         if($param1 == 'update'){
-            $this->Rlecture_model->updateLectureLink($param2);
+            $this->RLecture_model->updateLectureLink($param2);
             $this->session->set_flashdata('flash_message', get_phrase('Data updated successfully'));
             redirect(base_url(). 'admin/manage_recorded_lecture', 'refresh');
         }
@@ -547,7 +547,7 @@ class Admin extends CI_Controller {
         if($param1 == 'delete'){
             // print_r($param1);
             // exit;
-            $this->Rlecture_model->deleteLectureLink($param2);
+            $this->RLecture_model->deleteLectureLink($param2);
             $this->session->set_flashdata('flash_message', get_phrase('Data deleted successfully'));
             redirect(base_url(). 'admin/manage_recorded_lecture', 'refresh');
         }
